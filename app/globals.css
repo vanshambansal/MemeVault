@@ -4,6 +4,12 @@
   --primary: #6366f1;
   --secondary: #8b5cf6;
   --accent: #22d3ee;
+  --glass: rgba(15, 23, 42, 0.7);
+  --glass-dark: rgba(15, 23, 42, 0.9);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 6px 8px rgba(0, 0, 0, 0.2);
+  --radius: 12px;
+  --transition: all 0.3s ease;
 }
 
 html,
@@ -26,7 +32,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 h1,
@@ -49,6 +55,7 @@ h2 {
   gap: 1rem;
   max-width: 1400px;
   margin: 0 auto;
+  padding: 1rem;
 }
 
 /* HEADER STYLES */
@@ -57,10 +64,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2em 0;
+  padding: 2em;
   backdrop-filter: blur(10px);
-  background: rgba(15, 23, 42, 0.7);
-  border-radius: 12px;
+  background: var(--glass);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 header .brand {
@@ -82,9 +90,10 @@ input[type="submit"] {
   color: white;
   border: none;
   padding: 0.5em 1em;
-  border-radius: 8px;
+  border-radius: var(--radius);
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
 header .btn--fancy {
@@ -98,7 +107,7 @@ main .create .btn--fancy {
 .btn--fancy:hover,
 input[type="submit"]:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-hover);
 }
 
 /* MAIN LAYOUT */
@@ -114,9 +123,10 @@ main .create {
   grid-column: 1 / 13;
   place-content: center;
   min-height: 30svh;
-  background: rgba(30, 41, 59, 0.5);
-  border-radius: 16px;
+  background: var(--glass);
+  border-radius: var(--radius);
   padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* TOKEN LISTINGS */
@@ -132,7 +142,7 @@ main .listings h1 {
 
 .tokens {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5em;
   place-content: center;
   text-align: center;
@@ -141,18 +151,19 @@ main .listings h1 {
 .tokens p {
   grid-column: 1 / -1;
   font-family: 'Inter';
-  font-size: 1.50rem;
+  font-size: 1.5rem;
 }
 
 .token {
-  background: rgba(30, 41, 59, 0.7);
+  background: var(--glass);
   border: 1px solid var(--primary);
   color: var(--foreground);
   padding: 1.5em;
-  border-radius: 12px;
+  border-radius: var(--radius);
   font-size: 1.05rem;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
 .token:nth-child(1) {
@@ -161,7 +172,7 @@ main .listings h1 {
 
 .token:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-hover);
 }
 
 @keyframes pulse {
@@ -184,15 +195,16 @@ main .listings h1 {
 }
 
 .token__details .name {
-  font-size: 1.40rem;
+  font-size: 1.4rem;
   font-weight: 700;
 }
 
 /* MODAL STYLES */
-.list, .trade {
+.list,
+.trade {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: var(--glass-dark);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -202,17 +214,20 @@ main .listings h1 {
   flex-direction: column;
   padding-top: 3em;
   backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
-.list__description, .trade p {
+.list__description,
+.trade p {
   font-family: 'Inter';
-  font-size: 1.10rem;
+  font-size: 1.1rem;
   font-weight: 400;
   text-transform: lowercase;
   padding: 1em 0 0;
 }
 
-.list form, .trade form {
+.list form,
+.trade form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -221,20 +236,46 @@ main .listings h1 {
   padding: 2em;
 }
 
-.list form input[type="text"], 
+.list form input[type="text"],
 .trade form input[type="number"] {
-  background-color: rgba(15, 23, 42, 0.8);
+  background-color: var(--glass);
   color: var(--foreground);
   border: 1px solid var(--primary);
   width: 250px;
-  padding: 1.50em;
-  border-radius: 12px;
+  padding: 1.5em;
+  border-radius: var(--radius);
   font-family: 'Inter';
 }
 
 .trade .disclaimer {
-  font-size: 1.50rem;
+  font-size: 1.5rem;
   font-weight: bold;
   padding: 2em;
   color: var(--accent);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .page {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+
+  header,
+  main {
+    grid-column: 1 / -1;
+  }
+
+  .tokens {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .btn--fancy,
+  input[type="submit"] {
+    font-size: 1.2rem;
+  }
+
+  main .create .btn--fancy {
+    font-size: 1.5rem;
+  }
 }

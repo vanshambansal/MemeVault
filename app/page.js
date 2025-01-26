@@ -55,7 +55,7 @@ export default function Home() {
 
     // We'll get the first 6 tokens listed
     for (let i = 0; i < totalTokens; i++) {
-      if (i == 6) {
+      if (i == 10) {
         break
       }
 
