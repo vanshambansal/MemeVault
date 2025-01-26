@@ -4,7 +4,7 @@ import "./globals.css";
 const nabla = Nabla({ subsets: ['latin'] })
 
 export const metadata = {
-  title: "fun.pump",
+  title: "MemeVault",
   description: "create token listings",
 };
 
