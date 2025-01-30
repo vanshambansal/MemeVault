@@ -38,14 +38,6 @@ If you have previously deployed you may want to append `--reset` at the end:
 
 ### 6. Start frontend
 `$ npm run dev`
-`$ npx hardhat ignition deploy ignition/modules/Factory.js --network localhost`
-
-If you have previously deployed you may want to append `--reset` at the end:
-
-`$ npx hardhat ignition deploy ignition/modules/Factory.js --network localhost --reset`
-
-### 6. Start frontend
-`$ npm run dev`
 ---
 
 ## Future Possibilities with MemeVault
